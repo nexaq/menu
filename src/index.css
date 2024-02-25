@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-weight: 600;
+    font-family: "Gopher";
+    src:
+            url("Gopher-Medium.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-weight: 700;
+    font-family: "Gopher";
+    src:
+            url("Gopher-Bold.ttf") format("truetype");
+}
+

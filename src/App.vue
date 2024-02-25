@@ -1,26 +1,61 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="min-h-screen bg-super-orange">
+    <Header/>
+    <Banner/>
+    <div class="pb-20">
+      <Container>
+        <Tabs v-bind:items="tabItems">
+          <template v-slot:body="{ active }">
+            <div v-if="active === 1">
+              <Dishes />
+            </div>
+            <div v-if="active === 2">
+              SECOND
+            </div>
+          </template>
+        </Tabs>
+      </Container>
+    </div>
+    <Footer />
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import {defineComponent} from 'vue';
+import Header from "@/components/Header.vue";
+import Tabs from "@/components/Tabs/Tabs.vue";
+import Banner from "@/components/Banner/Banner.vue";
+import Container from "@/components/Container.vue";
+import Dishes from "@/components/Menu/CategoryList.vue";
+import Footer from "@/components/Footer.vue";
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    Footer,
+    Dishes,
+    Container,
+    Banner,
+    Tabs,
+    Header
+  },
+  data: () => {
+    return {
+      tabItems: [
+        {
+          key: 1,
+          name: 'Food',
+        },
+        {
+          key: 2,
+          name: 'Drinks',
+        },
+      ]
+    }
   }
-}
+});
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+
 </style>
